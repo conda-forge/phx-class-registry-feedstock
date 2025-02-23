@@ -1,6 +1,6 @@
-{% set python_min = '3.11.0' %}
+{% set python_min = '3.9.0' %}
 {% set name = "phx-class-registry" %}
-{% set version = "4.1.0" %}
+{% set version = "4.0.6" %}
 
 package:
   name: {{ name|lower }}
@@ -8,17 +8,16 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/phx-class-registry-{{ version }}.tar.gz
-  sha256: 6a7fe8568f9000ad1f90c9a81c5cb65ec20ee3b89b2aaab7a67e14dbb67e11d1
+  sha256: 66e9818de0a9d62e8cfe311587fcd3853ba941b71c11a7a73e5808d6550db125
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 1
+  number: 0
 
 requirements:
   host:
     - python {{ python_min }}
-    - poetry-core >=1.8.0
     - pip
   run:
     - python >={{ python_min }},<4.0.0
