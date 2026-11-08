@@ -1,14 +1,14 @@
 {% set python_min = "3.12.0" %}
 {% set name = "phx-class-registry" %}
-{% set version = "5.2.2" %}
+{% set version = "6.0.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: c8f792b8856a6c0af990f648be108de10ed0560771555d81a0452c4627f8f489
+  url: https://files.pythonhosted.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
+  sha256: 7253cc4598bb84dbd83bb83e75b6cb121bfdfba8aaa899f9d975ebefeedd35c2
 
 build:
   noarch: python
@@ -22,6 +22,7 @@ requirements:
     - pip
   run:
     - python >={{ python_min }},<4.0.0
+    - typing-extensions >=4.12,<5[when="python<3.13"]
 
 test:
   imports:
